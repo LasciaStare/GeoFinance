@@ -42,8 +42,9 @@ def cargar_y_procesar_datos():
             - paises_dict: Diccionario con información de países y tickers
     """
     
-    # Definición de países, tickers e información del G20 + Colombia
+    # Definición de países, tickers e información - Índices Bursátiles Globales
     paises_info = {
+        # G20 + Colombia
         'Argentina': {'ticker': '^MERV', 'iso3': 'ARG', 'tipo': 'indice'},
         'Australia': {'ticker': '^AXJO', 'iso3': 'AUS', 'tipo': 'indice'},
         'Brasil': {'ticker': '^BVSP', 'iso3': 'BRA', 'tipo': 'indice'},
@@ -63,7 +64,42 @@ def cargar_y_procesar_datos():
         'Turquía': {'ticker': 'XU100.IS', 'iso3': 'TUR', 'tipo': 'indice'},
         'Reino Unido': {'ticker': '^FTSE', 'iso3': 'GBR', 'tipo': 'indice'},
         'Estados Unidos': {'ticker': '^GSPC', 'iso3': 'USA', 'tipo': 'indice'},
-        'Colombia': {'ticker': 'ICOLCAP.CL', 'iso3': 'COL', 'tipo': 'indice'},
+        'Colombia': {'ticker': '^COLCAP', 'iso3': 'COL', 'tipo': 'indice'},
+        
+        # Europa Adicional
+        'España': {'ticker': '^IBEX', 'iso3': 'ESP', 'tipo': 'indice'},
+        'Países Bajos': {'ticker': '^AEX', 'iso3': 'NLD', 'tipo': 'indice'},
+        'Suiza': {'ticker': '^SSMI', 'iso3': 'CHE', 'tipo': 'indice'},
+        'Suecia': {'ticker': '^OMX', 'iso3': 'SWE', 'tipo': 'indice'},
+        'Noruega': {'ticker': 'OSEBX.OL', 'iso3': 'NOR', 'tipo': 'indice'},
+        'Dinamarca': {'ticker': '^OMXC25', 'iso3': 'DNK', 'tipo': 'indice'},
+        'Polonia': {'ticker': 'WIG.WA', 'iso3': 'POL', 'tipo': 'indice'},
+        'Grecia': {'ticker': 'GD.AT', 'iso3': 'GRC', 'tipo': 'indice'},
+        'Portugal': {'ticker': 'PSI20.LS', 'iso3': 'PRT', 'tipo': 'indice'},
+        'Bélgica': {'ticker': '^BFX', 'iso3': 'BEL', 'tipo': 'indice'},
+        'Austria': {'ticker': '^ATX', 'iso3': 'AUT', 'tipo': 'indice'},
+        
+        # América Latina Adicional
+        'Chile': {'ticker': '^IPSA', 'iso3': 'CHL', 'tipo': 'indice'},
+        'Perú': {'ticker': '^SPBLPGPT', 'iso3': 'PER', 'tipo': 'indice'},
+        
+        # Medio Oriente
+        'Israel': {'ticker': '^TA125.TA', 'iso3': 'ISR', 'tipo': 'indice'},
+        'Egipto': {'ticker': '^CASE30', 'iso3': 'EGY', 'tipo': 'indice'},
+        
+        # África
+        'Nigeria': {'ticker': 'NGSEINDEX.LG', 'iso3': 'NGA', 'tipo': 'indice'},
+        
+        # Asia-Pacífico Adicional
+        'Taiwán': {'ticker': '^TWII', 'iso3': 'TWN', 'tipo': 'indice'},
+        'Tailandia': {'ticker': '^SET.BK', 'iso3': 'THA', 'tipo': 'indice'},
+        'Malasia': {'ticker': '^KLSE', 'iso3': 'MYS', 'tipo': 'indice'},
+        'Singapur': {'ticker': '^STI', 'iso3': 'SGP', 'tipo': 'indice'},
+        'Hong Kong': {'ticker': '^HSI', 'iso3': 'HKG', 'tipo': 'indice'},
+        'Nueva Zelanda': {'ticker': '^NZ50', 'iso3': 'NZL', 'tipo': 'indice'},
+        'Filipinas': {'ticker': '^PSEi', 'iso3': 'PHL', 'tipo': 'indice'},
+        'Vietnam': {'ticker': '^VNINDEX', 'iso3': 'VNM', 'tipo': 'indice'},
+        'Pakistán': {'ticker': 'KSE100.KA', 'iso3': 'PAK', 'tipo': 'indice'},
         
         # Materias Primas
         'Oro': {'ticker': 'GC=F', 'iso3': 'GOLD', 'tipo': 'commodity'},
@@ -243,10 +279,10 @@ def calcular_metricas_periodo(df_historico, fecha_inicio, fecha_fin):
 # ============================================================================
 st.title("🌍 Mapa de Índices Bursátiles Globales")
 st.markdown("""
-Visualización interactiva del rendimiento de los principales índices bursátiles del G20.
+Visualización interactiva del rendimiento de índices bursátiles de más de 45 países.
 Utiliza los controles de la barra lateral para personalizar el periodo de análisis.
 
-*Nota: Algunos mercados no están disponibles actualmente en Yahoo Finance (Rusia, Colombia).*
+*Incluye: G20, Europa, América Latina, Asia-Pacífico, Medio Oriente y África.*
 """)
 
 # ============================================================================
@@ -499,7 +535,8 @@ st.info("""
 - **Fuente de Datos:** Yahoo Finance
 - **Periodo Analizado:** Últimos 5 años
 - **Frecuencia de Actualización:** Los datos se cachean por 1 hora
-- **Índices Bursátiles:** 18 países del G20 (excl. Rusia por limitaciones de datos)
+- **Cobertura:** 45+ países de todos los continentes
+- **Regiones:** G20, Europa, América Latina, Asia-Pacífico, Medio Oriente y África
 - 👉 **Análisis Detallado:** Ve a la página **📊 analisis** para analizar índices, commodities y forex en profundidad
 """)
 

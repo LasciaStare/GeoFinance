@@ -31,8 +31,9 @@ def cargar_y_procesar_datos():
     y calcula métricas de rendimiento y volatilidad.
     """
     
-    # Definición de países, tickers e información del G20 + Colombia
+    # Definición de países, tickers e información - Índices Bursátiles Globales
     paises_info = {
+        # G20 + Colombia
         'Argentina': {'ticker': '^MERV', 'iso3': 'ARG', 'tipo': 'indice'},
         'Australia': {'ticker': '^AXJO', 'iso3': 'AUS', 'tipo': 'indice'},
         'Brasil': {'ticker': '^BVSP', 'iso3': 'BRA', 'tipo': 'indice'},
@@ -45,16 +46,49 @@ def cargar_y_procesar_datos():
         'Italia': {'ticker': 'FTSEMIB.MI', 'iso3': 'ITA', 'tipo': 'indice'},
         'Japón': {'ticker': '^N225', 'iso3': 'JPN', 'tipo': 'indice'},
         'México': {'ticker': '^MXX', 'iso3': 'MEX', 'tipo': 'indice'},
-        # Nota: Rusia suspendido temporalmente por sanciones internacionales
-        # 'Rusia': {'ticker': '^IMOEX', 'iso3': 'RUS', 'tipo': 'indice'},
+        'Rusia': {'ticker': 'IMOEX.ME', 'iso3': 'RUS', 'tipo': 'indice'},
         'Arabia Saudita': {'ticker': '^TASI.SR', 'iso3': 'SAU', 'tipo': 'indice'},
         'Sudáfrica': {'ticker': '^J203.JO', 'iso3': 'ZAF', 'tipo': 'indice'},
         'Corea del Sur': {'ticker': '^KS11', 'iso3': 'KOR', 'tipo': 'indice'},
         'Turquía': {'ticker': 'XU100.IS', 'iso3': 'TUR', 'tipo': 'indice'},
         'Reino Unido': {'ticker': '^FTSE', 'iso3': 'GBR', 'tipo': 'indice'},
         'Estados Unidos': {'ticker': '^GSPC', 'iso3': 'USA', 'tipo': 'indice'},
-        # Nota: Colombia tiene disponibilidad limitada en Yahoo Finance
-        # 'Colombia': {'ticker': '^COLCAP', 'iso3': 'COL', 'tipo': 'indice'},
+        'Colombia': {'ticker': '^COLCAP', 'iso3': 'COL', 'tipo': 'indice'},
+        
+        # Europa Adicional
+        'España': {'ticker': '^IBEX', 'iso3': 'ESP', 'tipo': 'indice'},
+        'Países Bajos': {'ticker': '^AEX', 'iso3': 'NLD', 'tipo': 'indice'},
+        'Suiza': {'ticker': '^SSMI', 'iso3': 'CHE', 'tipo': 'indice'},
+        'Suecia': {'ticker': '^OMX', 'iso3': 'SWE', 'tipo': 'indice'},
+        'Noruega': {'ticker': 'OSEBX.OL', 'iso3': 'NOR', 'tipo': 'indice'},
+        'Dinamarca': {'ticker': '^OMXC25', 'iso3': 'DNK', 'tipo': 'indice'},
+        'Polonia': {'ticker': 'WIG.WA', 'iso3': 'POL', 'tipo': 'indice'},
+        'Grecia': {'ticker': 'GD.AT', 'iso3': 'GRC', 'tipo': 'indice'},
+        'Portugal': {'ticker': 'PSI20.LS', 'iso3': 'PRT', 'tipo': 'indice'},
+        'Bélgica': {'ticker': '^BFX', 'iso3': 'BEL', 'tipo': 'indice'},
+        'Austria': {'ticker': '^ATX', 'iso3': 'AUT', 'tipo': 'indice'},
+        
+        # América Latina Adicional
+        'Chile': {'ticker': '^IPSA', 'iso3': 'CHL', 'tipo': 'indice'},
+        'Perú': {'ticker': '^SPBLPGPT', 'iso3': 'PER', 'tipo': 'indice'},
+        
+        # Medio Oriente
+        'Israel': {'ticker': '^TA125.TA', 'iso3': 'ISR', 'tipo': 'indice'},
+        'Egipto': {'ticker': '^CASE30', 'iso3': 'EGY', 'tipo': 'indice'},
+        
+        # África
+        'Nigeria': {'ticker': 'NGSEINDEX.LG', 'iso3': 'NGA', 'tipo': 'indice'},
+        
+        # Asia-Pacífico Adicional
+        'Taiwán': {'ticker': '^TWII', 'iso3': 'TWN', 'tipo': 'indice'},
+        'Tailandia': {'ticker': '^SET.BK', 'iso3': 'THA', 'tipo': 'indice'},
+        'Malasia': {'ticker': '^KLSE', 'iso3': 'MYS', 'tipo': 'indice'},
+        'Singapur': {'ticker': '^STI', 'iso3': 'SGP', 'tipo': 'indice'},
+        'Hong Kong': {'ticker': '^HSI', 'iso3': 'HKG', 'tipo': 'indice'},
+        'Nueva Zelanda': {'ticker': '^NZ50', 'iso3': 'NZL', 'tipo': 'indice'},
+        'Filipinas': {'ticker': '^PSEi', 'iso3': 'PHL', 'tipo': 'indice'},
+        'Vietnam': {'ticker': '^VNINDEX', 'iso3': 'VNM', 'tipo': 'indice'},
+        'Pakistán': {'ticker': 'KSE100.KA', 'iso3': 'PAK', 'tipo': 'indice'},
         
         # Materias Primas
         'Oro': {'ticker': 'GC=F', 'iso3': 'GOLD', 'tipo': 'commodity'},
