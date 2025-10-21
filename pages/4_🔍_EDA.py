@@ -617,36 +617,4 @@ else:  # Análisis Integrado
     
     st.dataframe(df_summary, use_container_width=True, hide_index=True)
 
-# ============================================================================
-# CONCLUSIONES DEL EDA
-# ============================================================================
 
-st.markdown("---")
-st.header("💡 Conclusiones del EDA")
-
-st.markdown("""
-### 📊 Hallazgos Principales:
-
-**Mercados Financieros:**
-- Cobertura temporal extensa con datos diarios
-- Alta calidad de datos con pocos valores faltantes
-- Diversidad de activos (índices, forex, commodities)
-- Métricas de rendimiento pre-calculadas
-
-**Indicadores Macroeconómicos:**
-- Datos anuales del Banco Mundial
-- Múltiples indicadores por país
-- Cobertura variable según país e indicador
-- Útil para análisis de tendencias de largo plazo
-
-**Integración:**
-- {len(paises_comunes) if 'paises_comunes' in locals() else 'N/A'} países con ambos datasets
-- Posibilidad de análisis de correlaciones macro-mercados
-- Complementariedad temporal (diario vs anual)
-""")
-
-st.markdown("---")
-st.caption("""
-**Calidad de los Datos:** ✅ Ambos datasets están limpios y listos para análisis  
-**Próximos Pasos:** Análisis de correlaciones, modelado predictivo, y análisis de causalidad
-""")

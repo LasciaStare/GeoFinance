@@ -391,15 +391,7 @@ with col2:
     - **Yahoo Finance:** https://finance.yahoo.com
     - **Banco Mundial:** https://data.worldbank.org
     - **World Development Indicators**
-    
-    ### 🛠️ Tecnologías
-    
-    - Python 3.x
-    - Streamlit
-    - Pandas & NumPy
-    - Plotly
-    - SciPy
-    - yfinance & wbdata
+
     """)
 
 st.markdown("---")
