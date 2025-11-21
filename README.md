@@ -1,227 +1,231 @@
-# GeoFinance - Dashboard de Análisis Económico Global 🌍
+# 🌍 GeoFinance - Salud Económica Global y Predicción de Tendencias
 
-Dashboard interactivo para análisis de mercados financieros e indicadores macroeconómicos de 45+ países.
+![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-## 🚀 Características
+Dashboard interactivo de análisis integral que combina **mercados financieros** e **indicadores macroeconómicos** para evaluar la salud económica mundial y predecir tendencias futuras.
 
-- **Mapa Interactivo**: Visualización global del rendimiento de índices bursátiles
-- **Análisis de Mercados**: Gráficos detallados de índices, commodities y forex
-- **Análisis Macroeconómico**: Correlación entre indicadores del Banco Mundial y mercados
-- **Tests Estadísticos**: Pruebas de significancia (Pearson, Spearman)
-- **Datos en Tiempo Real**: Integración con Yahoo Finance
-- **Datos Históricos**: Hasta 20 años de datos macroeconómicos
+---
 
-## 📦 Instalación
+## 🎯 Pregunta Central de Investigación
 
-### 1. Clonar el repositorio
+> **"¿Cómo se relacionan los indicadores macroeconómicos con el desempeño de los mercados financieros globales, y qué patrones pueden ayudarnos a predecir tendencias económicas futuras?"**
+
+---
+
+## Características Principales
+
+- 🗺️ **Vista Global Interactiva**: Mapa mundial con rendimiento de 60+ mercados
+- 📊 **Análisis Exploratorio Macro**: 3 modos de análisis con tests estadísticos rigurosos
+- 📈 **Análisis de Activos**: Series temporales, distribuciones y drawdowns
+- 🔍 **EDA Completo**: Exploración profunda de calidad y estructura de datos
+- ⚖️ **Comparación Estadística**: Tests de hipótesis entre mercados y macro
+- 🎯 **Conclusiones y Modelo**: Marco de investigación y propuesta de ML
+
+---
+
+## Datos Analizados
+
+| Dataset                  | Observaciones | Cobertura                 | Periodo   | Granularidad |
+| ------------------------ | ------------- | ------------------------- | --------- | ------------ |
+| **Mercados Financieros** | 59,956        | 49 países, 49 activos     | 2020-2025 | Diaria       |
+| **Indicadores Macro**    | 5,280         | 44 países, 12 indicadores | 2015-2024 | Anual        |
+| **Datos Coincidentes**   | 162           | 33 países                 | 2020-2024 | Anual        |
+
+### Fuentes de Datos:
+- 📈 **Mercados**: Yahoo Finance (índices, forex, commodities)
+- 🌍 **Macro**: Banco Mundial API (PIB, inflación, comercio, etc.)
+
+---
+
+## Instalación y Uso
+
+### 1️⃣ Clonar el repositorio
 ```bash
-git clone <repository-url>
+git clone https://github.com/LasciaStare/GeoFinance.git
 cd GeoFinance
 ```
 
-### 2. Instalar dependencias
+### 2️⃣ Crear entorno virtual e instalar dependencias
 ```bash
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # Linux/Mac
+
 pip install -r requirements.txt
 ```
 
-## 📊 Uso
+### 3️⃣ Descargar datos
 
-### Paso 1: Descargar datos de mercados
-Primero, descarga los datos de los índices bursátiles:
-
+**A. Datos de mercados financieros:**
 ```bash
 python descarga_datos.py
 ```
+- Descarga datos de 60+ activos desde Yahoo Finance
+- Calcula métricas (rendimiento, volatilidad, Sharpe ratio)
+- Guarda en `data/historico_activos.parquet` y `data/metricas_activos.parquet`
+- ⏱️ Tiempo estimado: 5-10 minutos
 
-Este script:
-- Descarga datos de 45+ países desde Yahoo Finance
-- Incluye índices, commodities y forex
-- Calcula métricas (rendimiento, volatilidad)
-- Guarda en `data/metricas_activos.parquet` y `data/historico_activos.parquet`
-
-**Tiempo estimado**: 5-10 minutos
-
-### Paso 2: Descargar datos macroeconómicos
-Luego, descarga los indicadores del Banco Mundial:
-
+**B. Datos macroeconómicos:**
 ```bash
 python descarga_macro.py
 ```
+- Descarga 12 indicadores del Banco Mundial
+- Cobertura: 44 países, 2015-2024
+- Guarda en `data/datos_macro.parquet`
+- ⏱️ Tiempo estimado: 2-3 minutos
 
-Este script:
-- Descarga 13 indicadores macroeconómicos clave
-- Datos anuales de 2004-2024
-- 45 países con cobertura completa
-- Guarda en `data/datos_macro.parquet` y `data/datos_macro_pivote.parquet`
-
-**Tiempo estimado**: 3-5 minutos
-
-### Paso 3: Ejecutar el dashboard
-Finalmente, lanza el dashboard de Streamlit:
-
+### 4️⃣ Ejecutar el dashboard
 ```bash
 streamlit run app.py
 ```
 
-Abre tu navegador en `http://localhost:8501`
-
-## 🗂️ Estructura del Proyecto
-
-```
-GeoFinance/
-├── app.py                      # Página principal
-├── descarga_datos.py          # Script de descarga de mercados
-├── descarga_macro.py          # Script de descarga macroeconómica
-├── requirements.txt           # Dependencias
-├── Dockerfile                # Configuración Docker
-├── data/                     # Datos descargados (generados)
-│   ├── metricas_activos.parquet
-│   ├── historico_activos.parquet
-│   ├── datos_macro.parquet
-│   └── datos_macro_pivote.parquet
-└── pages/                    # Páginas del dashboard
-    ├── mapa.py              # Mapa interactivo global
-    ├── analisis.py          # Análisis detallado de mercados
-    └── macro.py             # Análisis macroeconómico
-```
-
-## 📈 Páginas del Dashboard
-
-### 1. 🏠 Inicio (app.py)
-Página de bienvenida con información general del proyecto.
-
-### 2. 🗺️ Mapa
-- Mapa coroplético interactivo
-- 45+ países con índices bursátiles
-- Métricas configurables (rendimiento, volatilidad)
-- Periodos personalizables
-- Rankings y tablas comparativas
-
-### 3. 📊 Análisis
-- Gráficos de series temporales
-- Análisis técnico
-- Comparación de activos
-- Métricas de riesgo-retorno
-
-### 4. 📈 Macro
-- Correlaciones entre indicadores macro y mercados
-- Tests estadísticos (Pearson, Spearman)
-- Análisis de significancia
-- Comparación multi-país
-- Interpretación automática de resultados
-
-## 🔬 Indicadores Macroeconómicos Incluidos
-
-1. **Crecimiento Económico**
-   - Crecimiento PIB (%)
-   - Crecimiento PIB per cápita (%)
-
-2. **Comercio e Inversión**
-   - Comercio (% del PIB)
-   - Inversión Extranjera Directa (% del PIB)
-
-3. **Inflación**
-   - Inflación al consumidor (%)
-
-4. **Sector Financiero**
-   - Capitalización de mercado (% del PIB)
-   - Crédito doméstico al sector privado (% del PIB)
-
-5. **Empleo**
-   - Tasa de desempleo (%)
-
-6. **Deuda**
-   - Deuda pública (% del PIB)
-
-7. **Otros**
-   - Población total
-   - PIB per cápita
-   - Inversión bruta (% del PIB)
-   - Balance fiscal (% del PIB)
-
-## 🌍 Cobertura Geográfica
-
-### G20
-Argentina, Australia, Brasil, Canadá, China, Francia, Alemania, India, Indonesia, Italia, Japón, México, Rusia, Arabia Saudita, Sudáfrica, Corea del Sur, Turquía, Reino Unido, Estados Unidos
-
-### Europa Adicional
-España, Países Bajos, Suiza, Suecia, Noruega, Dinamarca, Polonia, Grecia, Portugal, Bélgica, Austria
-
-### América Latina
-Colombia, Chile, Perú
-
-### Medio Oriente y África
-Israel, Egipto, Nigeria
-
-### Asia-Pacífico
-Taiwán, Tailandia, Malasia, Singapur, Hong Kong, Nueva Zelanda, Filipinas, Vietnam, Pakistán
-
-## 🛠️ Tecnologías Utilizadas
-
-- **Frontend**: Streamlit
-- **Visualización**: Plotly, Matplotlib, Seaborn
-- **Datos**: yfinance (mercados), wbdata (macro)
-- **Análisis**: pandas, numpy, scipy, scikit-learn
-- **Almacenamiento**: Parquet (PyArrow)
-
-## 📊 Tests Estadísticos
-
-El análisis macroeconómico incluye:
-
-1. **Correlación de Pearson**: Mide relaciones lineales
-2. **Correlación de Spearman**: Mide relaciones monotónicas
-3. **Tests de Hipótesis**: H₀: ρ = 0, α = 0.05
-4. **Interpretación**: Cohen (1988)
-   - Débil: |r| < 0.3
-   - Moderada: 0.3 ≤ |r| < 0.5
-   - Fuerte: |r| ≥ 0.5
-
-## 🔄 Actualización de Datos
-
-Para actualizar los datos, simplemente vuelve a ejecutar los scripts de descarga:
-
-```bash
-# Actualizar datos de mercados
-python descarga_datos.py
-
-# Actualizar datos macroeconómicos
-python descarga_macro.py
-```
-
-**Recomendación**: Actualiza los datos:
-- **Mercados**: Diariamente o semanalmente
-- **Macro**: Mensualmente (los datos del Banco Mundial se actualizan menos frecuentemente)
-
-## 🐛 Solución de Problemas
-
-### Error: "No se encontraron los archivos de datos"
-**Solución**: Ejecuta `python descarga_datos.py` y/o `python descarga_macro.py`
-
-### Error: "No se pudieron cargar datos de [País]"
-**Causa**: Yahoo Finance puede tener problemas temporales o el ticker cambió
-**Solución**: Los datos de otros países se cargarán correctamente
-
-### Error en la descarga del Banco Mundial
-**Causa**: Problemas de conexión o API temporalmente no disponible
-**Solución**: Espera unos minutos y vuelve a intentar
-
-## 📝 Licencia
-
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
-
-## 👥 Contribuciones
-
-¡Las contribuciones son bienvenidas! Por favor:
-1. Haz fork del proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📧 Contacto
-
-Para preguntas o sugerencias, abre un issue en GitHub.
+Abre tu navegador en: **http://localhost:8501**
 
 ---
 
-**Desarrollado con ❤️ usando Streamlit y Plotly**
+## 📁 Estructura del Proyecto
+
+```
+GeoFinance/
+├── 📄 app.py                           # Página principal del dashboard
+├── 📄 descarga_datos.py                # Script para datos de mercados
+├── 📄 descarga_macro.py                # Script para datos macro
+├── 📄 generar_resultados.py            # Script para análisis completo
+├── 📄 requirements.txt                 # Dependencias
+├── 📄 GUION_PRESENTACION.md            # Guion completo con storytelling
+├── 📄 PUNTOS_CLAVE_POR_PAGINA.md       # Qué decir en cada página
+├── 📄 RESUMEN_EJECUTIVO.md             # Resultados visuales ejecutivos
+├── 📂 pages/                           # Páginas del dashboard
+│   ├── 1_Vista_Global.py           # Mapa interactivo mundial
+│   ├── 2_Exploratorio_Macro.py     # Análisis macro con tests estadísticos
+│   ├── 3_Analisis_Activos.py       # Series temporales de activos
+│   ├── 4_EDA.py                    # EDA completo de datasets
+│   ├── 5_Comparacion_Datasets.py   # Comparación estadística rigurosa
+│   └── 6_Conclusiones.py           # Marco y hallazgos del proyecto
+└── 📂 data/                            # Datos en formato Parquet
+    ├── historico_activos.parquet
+    ├── metricas_activos.parquet
+    └── datos_macro.parquet
+```
+
+---
+
+## 🔬 Hallazgos Principales
+
+### 1. Relación entre Mercados y Economía Real
+
+```
+CORRELACIÓN DE PEARSON: -0.1023 (prácticamente NULA)
+P-VALUE: < 0.001 (estadísticamente MUY SIGNIFICATIVO)
+CONCLUSIÓN: Los mercados y el PIB son DIFERENTES
+```
+
+### 2. Volatilidad Comparativa
+
+| Métrica            | Mercados | PIB    | Ratio    |
+| ------------------ | -------- | ------ | -------- |
+| **Media**          | +12.21%  | +1.92% | 6.4x     |
+| **Desv. Estándar** | 33.88%   | 4.66%  | **7.3x** |
+| **Máximo**         | +349%    | +13.4% | 26x      |
+
+**Conclusión**: Los mercados son **7 veces más volátiles** que la economía real.
+
+### 3. Top Performers (Periodo 2020-2025)
+
+| Ranking | País/Activo | Rendimiento |
+| ------- | ----------- | ----------- |
+| 🥇       | Argentina   | +3,729%     |
+| 🥈       | Turquía     | +775%       |
+| 🥉       | Grecia      | +228%       |
+| 4       | Israel      | +135%       |
+| 5       | España      | +133%       |
+| 6       | ORO         | +128%       |
+
+### 4. Crecimiento del PIB por Región
+
+| Región     | Media | Rango       |
+| ---------- | ----- | ----------- |
+| **Asia** 🚀 | 3.59% | -6% a +10%  |
+| América ⚡  | 1.71% | -11% a +13% |
+| Europa 🐢   | 1.57% | -11% a +9%  |
+
+---
+
+## Modelo Propuesto
+
+### Arquitectura: Machine Learning Ensemble
+
+```
+Random Forest + XGBoost + LSTM
+                ↓
+   Predicción Multi-Horizonte
+```
+
+### Features (45+):
+- 🌍 **Macroeconómicas (8)**: PIB, inflación, desempleo, comercio
+- 📈 **Mercado (15)**: precio, volatilidad, volumen, correlaciones
+- 📊 **Derivadas (15+)**: SMA, RSI, MACD, momentum
+- 🎯 **Contexto (7)**: región, tipo de activo, trimestre
+
+### Objetivos:
+- ✅ Predicción de tendencias (1, 3, 6 meses)
+- ✅ Clasificación de salud económica (Alta/Media/Baja)
+- ✅ Sistema de alertas tempranas de crisis
+- ✅ Recomendaciones de diversificación óptima
+
+### Accuracy Esperado:
+- 1 mes: **65-70%**
+- 3 meses: **60-65%**
+- 6 meses: **55-60%**
+
+---
+
+## Tecnologías Utilizadas
+
+- **Python 3.10+**
+- **Streamlit**: Framework para dashboard interactivo
+- **Pandas**: Manipulación de datos
+- **Plotly**: Visualizaciones interactivas
+- **SciPy**: Tests estadísticos (Shapiro-Wilk, Mann-Whitney, ANOVA)
+- **yfinance**: Datos de Yahoo Finance
+- **wbdata**: API del Banco Mundial
+- **PyArrow**: Almacenamiento eficiente en Parquet
+
+---
+
+## 📚 Documentación Adicional
+
+### Tests Estadísticos Implementados:
+
+| Test               | Uso                        | Interpretación                  |
+| ------------------ | -------------------------- | ------------------------------- |
+| **Shapiro-Wilk**   | Normalidad                 | p < 0.05 → No normal            |
+| **Mann-Whitney U** | Comparación no paramétrica | p < 0.05 → Diferentes           |
+| **t-test**         | Comparación paramétrica    | p < 0.05 → Diferentes           |
+| **ANOVA**          | Comparación múltiple       | p < 0.05 → Al menos 1 diferente |
+| **Kruskal-Wallis** | ANOVA no paramétrico       | p < 0.05 → Al menos 1 diferente |
+| **Pearson**        | Correlación lineal         | r ∈ [-1, 1]                     |
+
+
+---
+
+## Limitaciones
+
+1. **Granularidad temporal**: Macro anual vs mercados diarios
+2. **Causalidad**: Correlación no implica causalidad
+3. **Variables omitidas**: Faltan tasas de interés, sentimiento
+4. **Periodo limitado**: Solo 5 años de solapamiento completo
+5. **Sesgo de supervivencia**: Solo mercados actualmente activos
+
+---
+
+
+<div align="center">
+
+**⭐ Si este proyecto te fue útil, considera darle una estrella en GitHub ⭐**
+
+Made with ❤️ by Jose | Octubre 2025
+
+</div>
